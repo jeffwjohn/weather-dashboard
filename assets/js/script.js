@@ -8,8 +8,11 @@
 var searchFormEl = document.querySelector("#form-input");
 var cityInputEl = document.querySelector("#searchTerm");
 var cityDisplayName = document.querySelector("#city");
-var tempEl = document.querySelector("#temp");
-var humidityContainer = document.querySelector("#humidity");
+var iconEl = document.querySelector("#icon");
+var temp = document.querySelector("#temp");
+var humidity = document.querySelector("#humidity");
+var windSpeed = document.querySelector("#wind");
+var uvIndex = document.querySelector("#uv");
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
@@ -41,18 +44,16 @@ var citySearch = function (city) {
 
 var displayWeather = function (data, city) {
     cityDisplayName.textContent = city;
-    tempEl.textContent = "Temperature:";
+    iconEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
+    temp.textContent = "Temperature: " + data.main.temp;
+    humidity.textContent = "Humidity: " + data.main.humidity;
+    windSpeed.textContent = "Wind Speed: " + data.wind.speed;
 
-    // for (var i = 0; i < data.length; i++) {
-
-    // }
-    var humidityEL = document.createElement("span");
-    humidityEL.textContent = " " + data.main.humidity;
-    humidityContainer.appendChild(humidityEL);
+   
 
     console.log(data);
     console.log(city);
-    console.log(data.main.humidity);
+    
 
 };
 
@@ -61,3 +62,5 @@ searchFormEl.addEventListener("submit", formSubmitHandler);
 
 
 // http://api.openweathermap.org/data/2.5/weather?q=London&appid=43fd1cdd770e5cf56daf2f9d5cdc1037
+
+// http://openweathermap.org/img/wn/" + value + "@2x.png
