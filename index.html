@@ -19,26 +19,33 @@
         <h1 class="header text-center bg-dark text-light p-3">Weather Dashboard</h1>
     </header>
     <main class="container-fluid row d-flex">
-        <div id="search-wrapper" class="col-3">
-            <label for="searchTerm" class="row">Search for a City:</label>
-            <input id="searchTerm" class="input " type="text">
-            <span><button><span class="oi oi-magnifying-glass"></span></button></span>
 
-            <section id="searchHx" class="searchHx mt-3">
+        <div id="search-wrapper" class="col 12 col-md-3">
+
+            <section class="card">
+                <form id="form-input" class="card-body">
+                    <label for="searchTerm" class="form-label">Search for a City:</label>
+                    <input id="searchTerm" name="searchTerm" class="input" type="text" autofocus="true">
+                    <button type="submit" class="btn"><span class="oi oi-magnifying-glass"></span></button>
+                </form>
+            </section>
+
+            <section id="searchHx" class="card searchHx mt-3">
                 <ul id="searchList" class="searchList list-group">
-                    <li class="list-item list-group-item border p-3">Search history</li>
-                    <li class="list-item list-group-item border p-3">displayed here</li>
-                    <li class="list-item list-group-item border p-3"></li>
-                    <li class="list-item list-group-item border p-3"></li>
-                    <li class="list-item list-group-item border p-3"></li>
-                    <li class="list-item list-group-item border p-3"></li>
-                    <li class="list-item list-group-item border p-3"></li>
-                    <li class="list-item list-group-item border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3">Search history</li>
+                    <li class="list-item list-group-item list-group-item-action border p-3">displayed here</li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
                 </ul>
             </section>
+
         </div>
 
-        <div id="forecast-wrapper" class="col-9">
+        <div id="forecast-wrapper" class="col-12 col-md-9">
             <section id="forecast" class="forecast card border">
                 <div id="city" class="forecast-data">City</div>
                 <div id="temp" class="forecast-data">Temperature:</div>
