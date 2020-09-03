@@ -41,17 +41,13 @@ var formSubmitHandler = function (event) {
 
 var citySearch = function (city) {
     var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=43fd1cdd770e5cf56daf2f9d5cdc1037";
-    console.log(apiUrl);
-
+   
     fetch(apiUrl).then(function (response) {
         response.json().then(function (data) {
             displayWeather(data, city);
           
-
         })
-
     });
-
 };
 
 var displayWeather = function (data, city) {
