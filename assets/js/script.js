@@ -24,6 +24,15 @@ var windSpeed = document.querySelector("#wind");
 var uvIndex = document.querySelector("#uv");
 var currentDate = document.querySelector("#date");
 var lat = "lat";
+var fiveDay = {
+    date: "11/05/1955",
+    icon: "elvis",
+    temp: "980",
+    humidity: "500"
+}
+var fiveDayArr = [];
+
+console.log(fiveDay);
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
@@ -45,6 +54,14 @@ var citySearch = function (city) {
     fetch(apiUrl).then(function (response) {
         response.json().then(function (data) {
             displayWeather(data, city);
+    
+    var apiFiveUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=43fd1cdd770e5cf56daf2f9d5cdc1037";
+            fetch(apiFiveUrl).then(function (fiveResponse) {
+                fiveResponse.json().then(function (fiveData) {
+                    displayFiveDay(fiveData);
+                    
+                })
+            })
           
         })
     });
@@ -53,9 +70,9 @@ var citySearch = function (city) {
 var displayWeather = function (data, city) {
     cityDisplayName.textContent = city;
     iconEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
-    temp.textContent = "Temperature: " + data.main.temp;
-    humidity.textContent = "Humidity: " + data.main.humidity;
-    windSpeed.textContent = "Wind Speed: " + data.wind.speed;
+    temp.textContent = "Temperature: " + data.main.temp + " ℉";
+    humidity.textContent = "Humidity: " + data.main.humidity + "%";
+    windSpeed.textContent = "Wind Speed: " + data.wind.speed + " mph";
 
     // Convert UTC code to current date
     var milliseconds = data.dt * 1000;
@@ -75,12 +92,35 @@ var displayWeather = function (data, city) {
         })
     })
     
-    console.log(data);
+   
 };
 
 var displayUV = function (data) {
     uvIndex.textContent = "UV Index: " + data.value
+    
+}
+
+displayFiveDay = function (data) {
     console.log(data);
+    console.log(data.list[0].dt_txt[12]);
+    var fiveDayCompiler = function (data) {
+        for (var i = 0; i < data.list.length; i++) {
+            if (data.list[i].dt_txt[11] == 1 && data.list[i].dt_txt[12] == 2) {
+                var fiveDay = {
+                    date: data.list[i].dt_txt,
+                    icon: data.list[i].weather[0].icon,
+                    temp: data.list[i].main.temp,
+                    humidity: data.list[i].main.humidity
+                }
+                fiveDayArr.push(fiveDay);
+                console.log(fiveDayArr);
+            } else
+            console.log('hmmm');
+        }
+        
+    }
+    fiveDayCompiler(data)
+
 }
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
