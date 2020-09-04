@@ -7,6 +7,8 @@ A web application that provides up to date weather information, searchable by ci
 * HTML
 * CSS
 * JavaScript
+
+
 ![Screenshot]()
 
 ## Website

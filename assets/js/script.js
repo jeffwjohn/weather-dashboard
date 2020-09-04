@@ -108,8 +108,8 @@ var fiveDayCompiler = function (data) {
             // Convert UTC code to current date
             var milliseconds = data.list[i].dt * 1000;
             var dateObject = new Date(milliseconds);
-            var newDate = dateObject.toLocaleDateString('en-US');       
-            fiveDay.date = newDate;           
+            var newDate = dateObject.toLocaleDateString('en-US');
+            fiveDay.date = newDate;
             fiveDayArr.push(fiveDay);
         }
     }
@@ -126,7 +126,7 @@ var displayFiveDay = function (data) {
         // console.log(date.toLocaleDateString('en-US'));
 
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<h5>' + data[i].date + '</h5><span>' + data[i].icon + '</span><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.innerHTML = '<h5 class="card-title">' + data[i].date + '</h5><span>' + data[i].icon + '</span><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
     }
 }
 
