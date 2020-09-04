@@ -1,3 +1,4 @@
+var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
 var cityInputEl = document.querySelector("#searchTerm");
 var cityDisplayName = document.querySelector("#city");
@@ -16,21 +17,57 @@ var fiveDay = {
 }
 var fiveDayArr = [];
 
-console.log(fiveDay);
+// SAVE USER INPUT TO LOCAL STORAGE
+// $("#search-btn").click(function (event) {
+//     localStorage.setItem($(this).attr("id"), $(this).siblings(".user-input").val());
+
+// })
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
     // GET VALUE FROM INPUT ELEMENT
-    var cityName = cityInputEl.value.trim();
+    var cityName = cityInputEl.value.trim().charAt(0).toUpperCase() + cityInputEl.value.slice(1);
 
     if (cityName) {
+        storeHistory(cityName);
+        getHistory();
         citySearch(cityName);
         cityInputEl.value = "";
     } else {
         alert("Please enter a city name.");
     }
 };
+
+var storeHistory = function (cityName) {
+    historyArr.unshift(cityName);
+    localStorage.setItem('Cities', historyArr);
+
+};
+
+var getHistory = function (cityName) {
+    if (localStorage.getItem('Cities') === null) {
+        return false;
+
+    } else {
+        historyArr = [];
+        historyArr.push(localStorage.getItem('Cities'));
+        newHistoryArr = historyArr[0].split(',');
+        console.log(newHistoryArr);
+
+        for (var i = 0; i < 8; i++) {
+            var hxItemEl = document.querySelector("#hxItem" + i);
+
+            if (hxItemEl.textContent = "") {
+                hxItemEl.parentElement.removeChild(hxItemEl);
+            } else {
+                hxItemEl.textContent = newHistoryArr[i];
+            }
+
+        }
+    }
+
+}
 
 var citySearch = function (city) {
     var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=43fd1cdd770e5cf56daf2f9d5cdc1037";
@@ -112,5 +149,7 @@ var displayFiveDay = function (data) {
 
     }
 };
+
+getHistory();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
