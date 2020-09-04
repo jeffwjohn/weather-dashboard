@@ -1,19 +1,3 @@
-// fetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=43fd1cdd770e5cf56daf2f9d5cdc1037')
-// .then(response => response.json())
-// .then(data => console.log(data));
-
-// fetch('api.openweathermap.org/data/2.5/weather?q={city name}&appid=524901&APPID=43fd1cdd770e5cf56daf2f9d5cdc1037')
-// .then(response => response.json())
-// .then(data => console.log(data));
-
-// DISPLAY CURRENT DATE IN HEADER
-// var showTime = function () {
-//     $("#year").text(moment().format('YYYY'));
-//     $("#date").text(moment().format('dddd, MM/DD/YYYY'));
-//     $("#time").text(moment().format('hh:mm a'));
-// }
-// setInterval(showTime, 1000); 
-
 var searchFormEl = document.querySelector("#form-input");
 var cityInputEl = document.querySelector("#searchTerm");
 var cityDisplayName = document.querySelector("#city");
@@ -129,19 +113,4 @@ var displayFiveDay = function (data) {
     }
 };
 
-
-
-
-
-
-
 searchFormEl.addEventListener("submit", formSubmitHandler);
-// showTime()
-
-
-
-// http://api.openweathermap.org/data/2.5/weather?q=London&appid=43fd1cdd770e5cf56daf2f9d5cdc1037
-
-// http://openweathermap.org/img/wn/" + value + "@2x.png
-
-// "http://api.openweathermap.org/data/2.5/uvi?lat=30.27&lon=-97.74&appid=43fd1cdd770e5cf56daf2f9d5cdc1037"
