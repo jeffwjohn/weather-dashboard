@@ -114,6 +114,7 @@ var displayUV = function (data) {
 };
 
 var fiveDayCompiler = function (data) {
+    var fiveDayArr = [];
     for (var i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt[11] == 1 && data.list[i].dt_txt[12] == 2) {
             var fiveDay = {
@@ -143,6 +144,7 @@ var displayFiveDay = function (data) {
         day.innerHTML = '<h4 class="card-title">' + data[i].date + '</h4><img id="icon' + i + '"class="col-10" alt="weather-conditions-icon" src="http://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
+    return
 };
 
 getHistory();
