@@ -69,6 +69,7 @@ var citySearch = function (city) {
 
 var displayWeather = function (data, city) {
     cityDisplayName.textContent = city;
+    // GET ICON
     iconEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
     temp.textContent = "Temperature: " + data.main.temp + " ℉";
     humidity.textContent = "Humidity: " + data.main.humidity + "%";
@@ -120,17 +121,15 @@ var fiveDayCompiler = function (data) {
 var displayFiveDay = function (data) {
     console.log(data);
 
-
     for (var i = 0; i < data.length; i++) {
 
-        // console.log(date.toLocaleDateString('en-US'));
-
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<h5 class="card-title">' + data[i].date + '</h5><span>' + data[i].icon + '</span><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
-    }
-}
+        day.innerHTML = '<h4 class="card-title">' + data[i].date + '</h4><img id="icon' + i + '"class="col-10" alt="weather-conditions-icon" src="http://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
-var formatDates = function (date) {}
+    }
+};
+
+
 
 
 
