@@ -17,14 +17,9 @@ var fiveDay = {
 }
 var fiveDayArr = [];
 
-// SAVE USER INPUT TO LOCAL STORAGE
-// $("#search-btn").click(function (event) {
-//     localStorage.setItem($(this).attr("id"), $(this).siblings(".user-input").val());
-
-// })
-
 var formSubmitHandler = function (event) {
     event.preventDefault();
+    
 
     // GET VALUE FROM INPUT ELEMENT
     var cityName = cityInputEl.value.trim().charAt(0).toUpperCase() + cityInputEl.value.slice(1);
