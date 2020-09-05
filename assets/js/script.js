@@ -22,10 +22,7 @@ console.log(listItemEl);
 
 var hxListSearch = function (index) {
     listItemEl.forEach(function(city) {
-        console.log(city.textContent);
-        console.log(index);
-        console.log(city.id);
-
+        
         for (var i = 0; i < 8; i++) {
            if (city.id == "hxItem" + index) {
             citySearch(city.textContent);
@@ -130,6 +127,15 @@ var displayWeather = function (data, city) {
 
 var displayUV = function (data) {
     uvIndex.textContent = "UV Index: " + data.value
+    console.log(typeof(data.value));
+    console.log(data.value);
+    if (data.value < 3) {
+        uvIndex.setAttribute("class",'forecast-data pb-3 bg-success');
+    } else if (data.value >= 3 && data.value < 8) {
+        uvIndex.setAttribute("class", 'forecast-data pb-3 bg-warning');
+    } else {
+        uvIndex.setAttribute("class", 'forecast-data pb-3 bg-danger');
+    }
 };
 
 var fiveDayCompiler = function (data) {
