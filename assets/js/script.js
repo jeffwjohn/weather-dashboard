@@ -16,6 +16,18 @@ var fiveDay = {
     humidity: "500"
 }
 var fiveDayArr = [];
+var listItemEl = document.querySelectorAll(".list-item");
+console.log(listItemEl);
+
+
+var hxListSearch = function (index) {
+    listItemEl.forEach(function(city) {
+        console.log(city.textContent);
+        
+    })
+};
+    
+
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
@@ -54,7 +66,7 @@ var getHistory = function (cityName) {
             var hxItemEl = document.querySelector("#hxItem" + i);
 
             if (hxItemEl.textContent = "") {
-                hxItemEl.parentElement.removeChild(hxItemEl);
+                // hxItemEl.parentElement.removeChild(hxItemEl);
             } else {
                 hxItemEl.textContent = newHistoryArr[i];
             }
@@ -150,3 +162,4 @@ var displayFiveDay = function (data) {
 getHistory();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
+// listItemEl.addEventListener("click", hxlistSearch);
