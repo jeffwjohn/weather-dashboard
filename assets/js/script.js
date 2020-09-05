@@ -23,6 +23,14 @@ console.log(listItemEl);
 var hxListSearch = function (index) {
     listItemEl.forEach(function(city) {
         console.log(city.textContent);
+        console.log(index);
+        console.log(city.id);
+
+        for (var i = 0; i < 8; i++) {
+           if (city.id == "hxItem" + index) {
+            citySearch(city.textContent);
+           }  
+        }
         
     })
 };
@@ -60,7 +68,6 @@ var getHistory = function (cityName) {
         historyArr = [];
         historyArr.push(localStorage.getItem('Cities'));
         newHistoryArr = historyArr[0].split(',');
-        console.log(newHistoryArr);
 
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
@@ -143,13 +150,12 @@ var fiveDayCompiler = function (data) {
             fiveDayArr.push(fiveDay);
         }
     }
-    console.log(fiveDayArr);
+    // console.log(fiveDayArr);
     displayFiveDay(fiveDayArr);
 };
 
 var displayFiveDay = function (data) {
-    console.log(data);
-
+    
     for (var i = 0; i < data.length; i++) {
 
         var day = document.getElementById("day" + i);
