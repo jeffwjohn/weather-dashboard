@@ -130,11 +130,11 @@ var displayUV = function (data) {
     console.log(typeof(data.value));
     console.log(data.value);
     if (data.value < 3) {
-        uvIndex.setAttribute("class",'forecast-data pb-3 bg-success');
+        uvIndex.setAttribute("class",'forecast-data bg-success text-white rounded w-50 text-center');
     } else if (data.value >= 3 && data.value < 8) {
-        uvIndex.setAttribute("class", 'forecast-data pb-3 bg-warning');
+        uvIndex.setAttribute("class", 'forecast-data bg-warning text-white rounded w-50 text-center');
     } else {
-        uvIndex.setAttribute("class", 'forecast-data pb-3 bg-danger');
+        uvIndex.setAttribute("class", 'forecast-data bg-danger text-white rounded w-50 text-center');
     }
 };
 
