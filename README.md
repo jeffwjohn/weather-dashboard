@@ -5,11 +5,11 @@ A web application that provides up to date weather information, searchable by ci
 
 ## Built With
 * HTML
-* CSS
+* Bootstrap
 * JavaScript
 
 
-![Screenshot]()
+![Screenshot](assets/images/screenshot.png)
 
 ## Website
 https://jeffwjohn.github.io/weather-dashboard/

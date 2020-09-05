@@ -17,26 +17,24 @@ var fiveDay = {
 }
 var fiveDayArr = [];
 var listItemEl = document.querySelectorAll(".list-item");
-console.log(listItemEl);
 
-
+// MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
-    listItemEl.forEach(function(city) {
-        
+    listItemEl.forEach(function (city) {
+
         for (var i = 0; i < 8; i++) {
-           if (city.id == "hxItem" + index) {
-            citySearch(city.textContent);
-           }  
+            if (city.id == "hxItem" + index) {
+                citySearch(city.textContent);
+            }
         }
-        
+
     })
 };
-    
 
-
+// ENABLE SEARCH TEXT INPUT
 var formSubmitHandler = function (event) {
     event.preventDefault();
-    
+
 
     // GET VALUE FROM INPUT ELEMENT
     var cityName = cityInputEl.value.trim().charAt(0).toUpperCase() + cityInputEl.value.slice(1);
@@ -51,12 +49,14 @@ var formSubmitHandler = function (event) {
     }
 };
 
+// SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function (cityName) {
     historyArr.unshift(cityName);
     localStorage.setItem('Cities', historyArr);
 
 };
 
+// RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
 var getHistory = function (cityName) {
     if (localStorage.getItem('Cities') === null) {
         return false;
@@ -80,6 +80,7 @@ var getHistory = function (cityName) {
 
 }
 
+// SEARCH API FOR CURRENT AND FIVE-DAY WEATHER DATA
 var citySearch = function (city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
 
@@ -99,6 +100,7 @@ var citySearch = function (city) {
     });
 };
 
+// DISPLAY CURRENT WEATHER DATA ON PAGE
 var displayWeather = function (data, city) {
     cityDisplayName.textContent = city;
     // GET ICON
@@ -125,12 +127,11 @@ var displayWeather = function (data, city) {
     })
 };
 
+// DISPLAY COLOR-CODED UV-INDEX
 var displayUV = function (data) {
     uvIndex.textContent = "UV Index: " + data.value
-    console.log(typeof(data.value));
-    console.log(data.value);
     if (data.value < 3) {
-        uvIndex.setAttribute("class",'forecast-data bg-success text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'forecast-data bg-success text-white rounded w-50 text-center');
     } else if (data.value >= 3 && data.value < 8) {
         uvIndex.setAttribute("class", 'forecast-data bg-warning text-white rounded w-50 text-center');
     } else {
@@ -138,6 +139,7 @@ var displayUV = function (data) {
     }
 };
 
+// COMPILE 5-DAY DATA INTO OBJECTS
 var fiveDayCompiler = function (data) {
     var fiveDayArr = [];
     for (var i = 0; i < data.list.length; i++) {
@@ -156,12 +158,13 @@ var fiveDayCompiler = function (data) {
             fiveDayArr.push(fiveDay);
         }
     }
-    // console.log(fiveDayArr);
+
     displayFiveDay(fiveDayArr);
 };
 
+// DISPLAY 5-DAY FORECAST DATA
 var displayFiveDay = function (data) {
-    
+
     for (var i = 0; i < data.length; i++) {
 
         var day = document.getElementById("day" + i);
@@ -174,4 +177,3 @@ var displayFiveDay = function (data) {
 getHistory();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
-// listItemEl.addEventListener("click", hxlistSearch);

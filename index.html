@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- add the style sheet here -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
@@ -33,14 +30,22 @@
 
             <section id="searchHx" class="card searchHx mt-3">
                 <ul id="searchList" class="searchList list-group">
-                    <li id="hxItem0" onclick="hxListSearch(0)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem1" onclick="hxListSearch(1)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem2" onclick="hxListSearch(2)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem3" onclick="hxListSearch(3)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem4" onclick="hxListSearch(4)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem5" onclick="hxListSearch(5)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem6" onclick="hxListSearch(6)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem7" onclick="hxListSearch(7)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem0" onclick="hxListSearch(0)"
+                        class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem1" onclick="hxListSearch(1)"
+                        class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem2" onclick="hxListSearch(2)"
+                        class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem3" onclick="hxListSearch(3)"
+                        class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem4" onclick="hxListSearch(4)"
+                        class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem5" onclick="hxListSearch(5)"
+                        class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem6" onclick="hxListSearch(6)"
+                        class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem7" onclick="hxListSearch(7)"
+                        class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
                 </ul>
             </section>
 
@@ -48,7 +53,7 @@
 
         <div id="forecast-wrapper" class="col col-lg-9">
 
-            <div class="row">
+            <section class="row">
                 <div class="col-12">
                     <section id="forecast" class="forecast card">
                         <article class="row">
@@ -61,17 +66,17 @@
                                     <div id="temp" class="forecast-data pb-3"></div>
                                     <div id="humidity" class="forecast-data pb-3"></div>
                                     <div id="wind" class="forecast-data pb-3"></div>
-                                   <div id="uv" class=""></div>
+                                    <div id="uv" class=""></div>
                                 </div>
 
                             </div>
-                            <div class="col-6"><img id="icon" class="col-12" alt="weather-conditions-icon"></img></div>
+                            <div class="col-6"><img id="icon" class="col-12"></img></div>
 
                         </article>
 
                     </section>
                 </div>
-            </div>
+            </section>
 
             <section id="fiveDay" class="mt-2">
                 <h3 class="">5-Day Forecast:</h3>
@@ -123,14 +128,7 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
-        integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
-        crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
