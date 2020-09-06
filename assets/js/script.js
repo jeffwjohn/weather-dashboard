@@ -65,7 +65,7 @@ var getHistory = function (cityName) {
         historyArr = [];
         historyArr.push(localStorage.getItem('Cities'));
         newHistoryArr = historyArr[0].split(',');
-        
+
 
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
@@ -85,18 +85,24 @@ var citySearch = function (city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
 
     fetch(apiUrl).then(function (response) {
-        response.json().then(function (data) {
-            displayWeather(data, city);
+        if (!response.ok) {
+            alert("City not found! Try again.");
+            document.location.replace("./index.html");
+        } else {
+            response.json().then(function (data) {
+                displayWeather(data, city);
 
-            var apiFiveUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
-            fetch(apiFiveUrl).then(function (fiveResponse) {
-                fiveResponse.json().then(function (fiveData) {
-                    fiveDayCompiler(fiveData);
+                var apiFiveUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
+                fetch(apiFiveUrl).then(function (fiveResponse) {
+                    fiveResponse.json().then(function (fiveData) {
+                        fiveDayCompiler(fiveData);
 
+                    })
                 })
-            })
 
-        })
+            })
+        }
+
     });
 };
 
@@ -183,4 +189,3 @@ var displayFiveDay = function (data) {
 getHistory();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
-
