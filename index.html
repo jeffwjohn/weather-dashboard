@@ -11,16 +11,16 @@
     <title>Weather Dashboard</title>
 </head>
 
-<body>
+
     <header>
         <h1 class="header text-center bg-dark text-light p-3">Weather Dashboard</h1>
     </header>
     <main class="container-fluid row d-flex m-0">
 
-        <div id="search-wrapper" class="col-11 col-md-3 p-0">
+        <div id="search-wrapper" class="col-12 col-md-3 p-0">
 
-            <section class="card row col-12">
-                <form id="form-input" class="card-body pl-3 pr-0 text-left">
+            <section class="col-12 p-0">
+                <form id="form-input" class="text-left">
                     <label for="searchTerm" class="form-label col-12">Search for a City:</label>
                     <input id="searchTerm" name="searchTerm" class="input col-8" type="text" autofocus="true">
                     <button id="search-btn" type="submit" class="btn bg-primary text-white"><span
@@ -28,25 +28,25 @@
                 </form>
             </section>
 
-            <section id="searchHx" class="card col-12 row 
-            searchHx mt-3 mr-1">
+            <section id="searchHx" class="p-0 col-12 w-auto
+            searchHx mt-3">
                 <ul id="searchList" class="searchList list-group">
                     <li id="hxItem0" onclick="hxListSearch(0)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-3 pb-3"></li>
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                     <li id="hxItem1" onclick="hxListSearch(1)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-3 pb-3"></li>
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                     <li id="hxItem2" onclick="hxListSearch(2)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-3 pb-3"></li>
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                     <li id="hxItem3" onclick="hxListSearch(3)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-3 pb-3"></li>
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                     <li id="hxItem4" onclick="hxListSearch(4)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-3 pb-3"></li>
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                     <li id="hxItem5" onclick="hxListSearch(5)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-3 pb-3"></li>
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                     <li id="hxItem6" onclick="hxListSearch(6)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-3 pb-3"></li>
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                     <li id="hxItem7" onclick="hxListSearch(7)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-3 pb-3"></li>
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                 </ul>
             </section>
 
@@ -54,14 +54,14 @@
 
         <div id="forecast-wrapper" class="col-12 col-md-9 p-0">
 
-            <section class="row ml-1">
+            <section class="row col-12 border ml-1">
                 <div class="col-12 pr-0">
-                    <section id="forecast" class="forecast card">
+                    <section id="forecast" class="forecast">
                         <article class="row no-gutters">
-                            <div class="col-6 col-xs-12 card-body">
+                            <div class="col-6 col-xs-12 >
 
-                                <h1 id="city" class="card-title forecast-data"></h1>
-                                <h4 id="date" class="card-subtitle"></h4>
+                                <h1 id="city" class=" forecast-data"></h1>
+                                <h4 id="date" class="-subtitle"></h4>
                                 <br>
                                 <div class="data d-flex flex-column align-items-left">
                                     <div id="temp" class="forecast-data pb-3"></div>
@@ -79,46 +79,46 @@
                 </div>
             </section>
 
-            <section id="fiveDay" class="mt-2 ml-1">
+            <section id="fiveDay" class="mt-2 ml-1 border">
                 <h3 class="col-12 ml-1 pl-2">5-Day Forecast:</h3>
 
                 <article class="row col-12 justify-content-between container w-100 ml-1 mr-0 p-0">
-                    <div class="future bg-primary text-white card col-md m-1">
-                        <div id="day0" class="card-body pl-0 pr-0 text-center">
-                            <p class="card-title">DATE</p>
-                            <span id="icon0" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white col-md m-1">
+                        <div id="day0" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon0" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div class="future bg-primary text-white card col-md m-1">
-                        <div id="day1" class="card-body pl-0 pr-0 text-center">
-                            <p class="card-title">DATE</p>
-                            <span id="icon1" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white  col-md m-1">
+                        <div id="day1" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon1" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div class="future bg-primary text-white card col-md m-1">
-                        <div id="day2" class="card-body pl-0 pr-0 text-center">
-                            <p class="card-title">DATE</p>
-                            <span id="icon2" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white  col-md m-1">
+                        <div id="day2" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon2" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div class="future bg-primary text-white card col-md m-1">
-                        <div id="day3" class="card-body pl-0 pr-0 text-center">
-                            <p class="card-title">DATE</p>
-                            <span id="icon3" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white  col-md m-1">
+                        <div id="day3" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon3" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div class="future bg-primary text-white card col-md m-1">
-                        <div id="day4" class="card-body pl-0 pr-0 text-center">
-                            <p class="card-title">DATE</p>
-                            <span id="icon4" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white  col-md m-1">
+                        <div id="day4" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon4" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
@@ -131,6 +131,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
+
 
 </html>
