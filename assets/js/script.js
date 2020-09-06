@@ -40,8 +40,8 @@ var formSubmitHandler = function (event) {
     var cityName = cityInputEl.value.trim().charAt(0).toUpperCase() + cityInputEl.value.slice(1);
 
     if (cityName) {
-        storeHistory(cityName);
-        getHistory();
+
+
         citySearch(cityName);
         cityInputEl.value = "";
     } else {
@@ -53,6 +53,7 @@ var formSubmitHandler = function (event) {
 var storeHistory = function (cityName) {
     historyArr.unshift(cityName);
     localStorage.setItem('Cities', historyArr);
+
 
 };
 
@@ -66,17 +67,24 @@ var getHistory = function (cityName) {
         historyArr.push(localStorage.getItem('Cities'));
         newHistoryArr = historyArr[0].split(',');
 
+        if (historyArr.includes(cityName)) {
+            break;
 
-        for (var i = 0; i < 8; i++) {
-            var hxItemEl = document.querySelector("#hxItem" + i);
-            hxItemEl.textContent = newHistoryArr[i];
+        } else {
+            for (var i = 0; i < 8; i++) {
+                var hxItemEl = document.querySelector("#hxItem" + i);
+                hxItemEl.textContent = newHistoryArr[i];
 
-            if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
-                hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
-            } else {
-                hxItemEl.setAttribute("class", "searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2");
+                if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
+                    hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
+                } else {
+                    hxItemEl.setAttribute("class", "searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2");
+                }
             }
         }
+
+
+
     }
 }
 
@@ -85,16 +93,25 @@ var citySearch = function (city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
 
     fetch(apiUrl).then(function (response) {
-        // if(response.ok)
-        response.json().then(function (data) {
-            displayWeather(data, city);
-            fiveDayFetch(city)
+        if (response.ok) {
+            response.json().then(function (data) {
+                var cityName = data.name;
+                storeHistory(cityName);
+                getHistory();
+                displayWeather(data, city);
+                fiveDayFetch(city)
 
+            });
 
+        } else {
+            alert("City not found! Try again.");
+            document.location.replace("./index.html");
+        }
 
-        })
     });
-};
+
+}
+
 
 // SEARCH API FOR FIVE-DAY FORECAST
 var fiveDayFetch = function (city) {
