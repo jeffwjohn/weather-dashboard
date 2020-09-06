@@ -174,7 +174,7 @@ var displayFiveDay = function (data) {
     for (var i = 0; i < data.length; i++) {
 
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<p class="pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="col-8" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.innerHTML = '<p class="text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="col-8" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
     return
