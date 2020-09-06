@@ -9,11 +9,14 @@
     font-family: "IBM Plex Sans", sans-serif;
     /* color: var(--dark); */
     line-height: 1.5;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   
+  #city {
+      margin-top: 10px;
+  }
   p {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .future {

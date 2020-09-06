@@ -159,7 +159,9 @@ var fiveDayCompiler = function (data) {
             // Convert UTC code to current date
             var milliseconds = data.list[i].dt * 1000;
             var dateObject = new Date(milliseconds);
-            var newDate = dateObject.toLocaleDateString('en-US');
+            var options = {month: 'numeric', day: 'numeric'}; 
+            var newDate = dateObject.toLocaleDateString('en-US', options);
+            
             fiveDay.date = newDate;
             fiveDayArr.push(fiveDay);
         }
@@ -174,7 +176,7 @@ var displayFiveDay = function (data) {
     for (var i = 0; i < data.length; i++) {
 
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<p class="text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="col-8" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.innerHTML = '<p class="h5 text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="col-9" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p class="h6 m-0">Temp: ' + data[i].temp + '℉</p><p class="h6 mb-1">Humidity: ' + data[i].humidity + '%</p>';
 
     }
     return
