@@ -65,7 +65,7 @@ var getHistory = function (cityName) {
         historyArr = [];
         historyArr.push(localStorage.getItem('Cities'));
         newHistoryArr = historyArr[0].split(',');
-        
+
 
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
@@ -80,25 +80,32 @@ var getHistory = function (cityName) {
     }
 }
 
-// SEARCH API FOR CURRENT AND FIVE-DAY WEATHER DATA
+// SEARCH API FOR CURRENT WEATHER DATA
 var citySearch = function (city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
 
     fetch(apiUrl).then(function (response) {
+        // if(response.ok)
         response.json().then(function (data) {
             displayWeather(data, city);
+            fiveDayFetch(city)
 
-            var apiFiveUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
-            fetch(apiFiveUrl).then(function (fiveResponse) {
-                fiveResponse.json().then(function (fiveData) {
-                    fiveDayCompiler(fiveData);
 
-                })
-            })
 
         })
     });
 };
+
+// SEARCH API FOR FIVE-DAY FORECAST
+var fiveDayFetch = function (city) {
+    var apiFiveUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
+    fetch(apiFiveUrl).then(function (fiveResponse) {
+        fiveResponse.json().then(function (fiveData) {
+            fiveDayCompiler(fiveData);
+
+        })
+    })
+}
 
 // DISPLAY CURRENT WEATHER DATA ON PAGE
 var displayWeather = function (data, city) {
@@ -159,9 +166,12 @@ var fiveDayCompiler = function (data) {
             // Convert UTC code to current date
             var milliseconds = data.list[i].dt * 1000;
             var dateObject = new Date(milliseconds);
-            var options = {month: 'numeric', day: 'numeric'}; 
+            var options = {
+                month: 'numeric',
+                day: 'numeric'
+            };
             var newDate = dateObject.toLocaleDateString('en-US', options);
-            
+
             fiveDay.date = newDate;
             fiveDayArr.push(fiveDay);
         }
@@ -185,4 +195,3 @@ var displayFiveDay = function (data) {
 getHistory();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
-
