@@ -22,11 +22,11 @@ var listItemEl = document.querySelectorAll(".list-item");
 var hxListSearch = function (index) {
     listItemEl.forEach(function (city) {
 
-        for (var i = 0; i < 8; i++) {
-            if (city.id == "hxItem" + index) {
-                citySearch(city.textContent);
-            }
+        // for (var i = 0; i < 8; i++) {
+        if (city.id == "hxItem" + index) {
+            citySearch(city.textContent);
         }
+        // }
 
     })
 };
@@ -40,9 +40,10 @@ var formSubmitHandler = function (event) {
     var cityName = cityInputEl.value.trim().charAt(0).toUpperCase() + cityInputEl.value.slice(1);
 
     if (cityName) {
-        storeHistory(cityName);
-        getHistory();
         citySearch(cityName);
+        // storeHistory(cityName);
+        // getHistory();
+        // citySearch(cityName);
         cityInputEl.value = "";
     } else {
         alert("Please enter a city name.");
@@ -51,10 +52,25 @@ var formSubmitHandler = function (event) {
 
 // SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function (cityName) {
-    historyArr.unshift(cityName);
-    localStorage.setItem('Cities', historyArr);
+    if (localStorage.getItem('Cities') === null) {
+        historyArr.unshift(cityName);
+        localStorage.setItem('Cities', historyArr);
+        return false;
 
+    } else {
+        historyArr = [];
+        historyArr.push(localStorage.getItem('Cities'));
+        newHistoryArr = historyArr[0].split(',');
+        if (newHistoryArr.includes(cityName)) {
+            return false;
+        } else {
+            historyArr.unshift(cityName);
+            localStorage.setItem('Cities', historyArr);
+        }
+    }
 };
+
+
 
 // RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
 var getHistory = function (cityName) {
@@ -85,10 +101,9 @@ var citySearch = function (city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
 
     fetch(apiUrl).then(function (response) {
-        if (!response.ok) {
-            alert("City not found! Try again.");
-            document.location.replace("./index.html");
-        } else {
+        if (response.ok) {
+            storeHistory(city);
+            getHistory();
             response.json().then(function (data) {
                 displayWeather(data, city);
 
@@ -101,9 +116,13 @@ var citySearch = function (city) {
                 })
 
             })
+        } else {
+            alert("City not found. Try again!");
+            return false;
         }
 
-    });
+    })
+
 };
 
 // DISPLAY CURRENT WEATHER DATA ON PAGE
