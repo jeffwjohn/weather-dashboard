@@ -143,10 +143,11 @@ var displayWeather = function (data, city) {
     var dateToday = dateObject.toLocaleDateString('en-US');
     currentDate.textContent = dateToday
 
+    // Get UV Index 
     var lat = data.coord.lat
     var lon = data.coord.lon
     var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=c888bc87519e878c5cbb608278ea9713";
-    uvIndex.textContent = "UV Index: " + lat + lon;
+    
 
     fetch(uvUrl).then(function (response) {
         response.json().then(function (data) {
@@ -157,13 +158,14 @@ var displayWeather = function (data, city) {
 
 // DISPLAY COLOR-CODED UV-INDEX
 var displayUV = function (data) {
-    uvIndex.textContent = "UV Index: " + data.value
+    var uvRound = Math.round(data.value);
+    uvIndex.textContent = "UV Index: " + uvRound;
     if (data.value < 3) {
-        uvIndex.setAttribute("class", 'col-lg-5 col-xl-4 forecast-data bg-success text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'forecast-data bg-success text-white rounded text-center');
     } else if (data.value >= 3 && data.value < 8) {
-        uvIndex.setAttribute("class", 'col-lg-5 col-xl-4 forecast-data bg-warning text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'forecast-data bg-warning text-white rounded text-center');
     } else {
-        uvIndex.setAttribute("class", 'w-100 col-sm-12 col-lg-6 col-xl-4 forecast-data bg-danger text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'forecast-data bg-danger text-white rounded text-center');
     }
 };
 
