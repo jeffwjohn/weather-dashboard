@@ -198,7 +198,8 @@ var fiveDayCompiler = function (data) {
 
 // DISPLAY 5-DAY FORECAST DATA
 var displayFiveDay = function (data) {
-
+    var fiveTitle = document.getElementById("fiveTitle");
+    fiveTitle.setAttribute("class", "col-12 ml-1 pl-2");
     for (var i = 0; i < data.length; i++) {
         
         var day = document.getElementById("day" + i);
