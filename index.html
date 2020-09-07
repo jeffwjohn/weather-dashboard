@@ -29,7 +29,7 @@
         </section>
 
         <section id="searchHx" class="p-0 col-12 w-auto
-            searchHx mt-3 mr-3">
+            searchHx mt-3">
             <ul id="searchList" class="searchList list-group">
                 <li id="hxItem0" onclick="hxListSearch(0)"
                     class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
@@ -60,7 +60,7 @@
                     <article class="row no-gutters">
                         <div class="col-6">
                             <h1 id="city" class="forecast-data"></h1>
-                            <h4 id="date" class="subtitle"></h4>
+                            <h3 id="date" class="subtitle"></h3>
                             <br>
                             <div class="data d-flex flex-column align-items-left">
                                 <div id="temp" class="forecast-data pb-3"></div>
@@ -70,7 +70,7 @@
                             </div>
 
                         </div>
-                        <div class="col-6"><img id="icon" class="col-12 col-md-6"></img></div>
+                        <div class="col-6"><img id="icon" class="w-100 col-xl-6"></img></div>
 
                     </article>
 
@@ -79,50 +79,48 @@
         </section>
 
         <section id="fiveDay" class="mt-2">
-            <h3 class="col-12 ml-1 pl-2">5-Day Forecast:</h3>
+            <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
 
-            <article class="container w-auto h-auto col-12 p-0">
+            <article class="row col-12 container w-auto m-0">
                 <div class="row">
-                    <div id="day0" class="col-md 
-                            text-left future bg-primary rounded text-white m-1">
-                        <p class="h5 text-center pt-2">DATE</p>
+                    <div id="day0" class="">
+                        <p class="text-center pt-2"></p>
                         <span id="icon0" class="col-6"></span>
-                        <p class="m-0 h6">Temp: </p>
-                        <p class="mb-1 h6">Humidity: </p>
+                        <p></p>
+                        <p></p>
                     </div>
 
-                    <div id="day1" class="col-md
-                            text-left future bg-primary rounded text-white m-1">
-                        <p class="h5 text-center pt-2">DATE</p>
+
+                    <div id="day1" class="">
+                        <p class="text-center pt-2"></p>
                         <span id="icon1" class="col-6"></span>
-                        <p class="m-0 h6">Temp: </p>
-                        <p class="mb-1 h6">Humidity: </p>
+                        <p></p>
+                        <p></p>
                     </div>
 
-                    <div id="day2" class="col-md 
-                            text-left future bg-primary rounded text-white m-1">
-                        <p class="h5 text-center pt-2">DATE</p>
+
+                    <div id="day2" class="">
+                        <p class="text-center pt-2"></p>
                         <span id="icon2" class="col-6"></span>
-                        <p class="m-0 h6">Temp: </p>
-                        <p class="mb-1 h6">Humidity: </p>
+                        <p></p>
+                        <p></p>
                     </div>
 
-                    <div id="day3" class="col-md 
-                            text-left future bg-primary rounded text-white m-1">
-                        <p class="h5 text-center pt-2">DATE</p>
+
+                    <div id="day3" class="">
+                        <p class="text-center pt-2"></p>
                         <span id="icon3" class="col-6"></span>
-                        <p class="m-0 h6" class="m-0">Temp: </p>
-                        <p class="mb-1 h6">Humidity: </p>
+                        <p></p>
+                        <p></p>
                     </div>
 
-                    <div id="day4" class="col-md 
-                            text-left future bg-primary rounded text-white m-1">
-                        <p class="h5 text-center pt-2">DATE</p>
+
+                    <div id="day4" class="">
+                        <p class="text-center pt-2"></p>
                         <span id="icon4" class="col-6"></span>
-                        <p class="m-0 h6">Temp: </p>
-                        <p class="mb-1 h6">Humidity: </p>
+                        <p></p>
+                        <p></p>
                     </div>
-
                 </div>
             </article>
         </section>
