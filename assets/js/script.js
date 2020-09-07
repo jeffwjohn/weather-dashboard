@@ -200,8 +200,9 @@ var fiveDayCompiler = function (data) {
 var displayFiveDay = function (data) {
 
     for (var i = 0; i < data.length; i++) {
-
+        
         var day = document.getElementById("day" + i);
+        day.setAttribute('class', 'future bg-primary rounded text-white col-md m-1 w-100');
         day.innerHTML = '<p class="h4 text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="w-100" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
