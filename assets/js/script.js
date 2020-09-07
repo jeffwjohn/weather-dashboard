@@ -169,6 +169,7 @@ var displayUV = function (data) {
 
 // COMPILE 5-DAY DATA INTO OBJECTS
 var fiveDayCompiler = function (data) {
+    console.log(data);
     var fiveDayArr = [];
     for (var i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt[11] == 1 && data.list[i].dt_txt[12] == 2) {
@@ -178,13 +179,15 @@ var fiveDayCompiler = function (data) {
                 temp: data.list[i].main.temp,
                 humidity: data.list[i].main.humidity
             }
+            console.log(fiveDay);
             // Round temperature to nearest integer
             var roundTemp = Math.round(data.list[i].main.temp);
             fiveDay.temp = roundTemp;
             // Convert UTC code to current date
             var milliseconds = data.list[i].dt * 1000;
             var dateObject = new Date(milliseconds);
-            var newDate = dateObject.toLocaleDateString('en-US');
+            var options = {month: 'numeric', day: 'numeric'};
+            var newDate = dateObject.toLocaleDateString('en-US', options);
             fiveDay.date = newDate;
             fiveDayArr.push(fiveDay);
         }
@@ -199,7 +202,7 @@ var displayFiveDay = function (data) {
     for (var i = 0; i < data.length; i++) {
 
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<p class="text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="col-8" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.innerHTML = '<p class="h4 text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="w-100" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
     return
