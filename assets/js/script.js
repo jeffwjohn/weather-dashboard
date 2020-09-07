@@ -22,11 +22,11 @@ var listItemEl = document.querySelectorAll(".list-item");
 var hxListSearch = function (index) {
     listItemEl.forEach(function (city) {
 
-        for (var i = 0; i < 8; i++) {
+        // for (var i = 0; i < 8; i++) {
             if (city.id == "hxItem" + index) {
                 citySearch(city.textContent);
             }
-        }
+        // }
 
     })
 };
@@ -40,9 +40,10 @@ var formSubmitHandler = function (event) {
     var cityName = cityInputEl.value.trim().charAt(0).toUpperCase() + cityInputEl.value.slice(1);
 
     if (cityName) {
+        citySearch(cityName);
         storeHistory(cityName);
         getHistory();
-        citySearch(cityName);
+        // citySearch(cityName);
         cityInputEl.value = "";
     } else {
         alert("Please enter a city name.");
@@ -65,7 +66,7 @@ var getHistory = function (cityName) {
         historyArr = [];
         historyArr.push(localStorage.getItem('Cities'));
         newHistoryArr = historyArr[0].split(',');
-        
+
 
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
@@ -85,19 +86,26 @@ var citySearch = function (city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
 
     fetch(apiUrl).then(function (response) {
-        response.json().then(function (data) {
-            displayWeather(data, city);
+        if (response.ok) {
+            response.json().then(function (data) {
+                displayWeather(data, city);
 
-            var apiFiveUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
-            fetch(apiFiveUrl).then(function (fiveResponse) {
-                fiveResponse.json().then(function (fiveData) {
-                    fiveDayCompiler(fiveData);
+                var apiFiveUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
+                fetch(apiFiveUrl).then(function (fiveResponse) {
+                    fiveResponse.json().then(function (fiveData) {
+                        fiveDayCompiler(fiveData);
 
+                    })
                 })
-            })
 
-        })
-    });
+            })
+        } else {
+            alert ("City not found. Try again!");
+            return false;
+        }
+
+    })
+
 };
 
 // DISPLAY CURRENT WEATHER DATA ON PAGE
@@ -183,4 +191,3 @@ var displayFiveDay = function (data) {
 getHistory();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
-
