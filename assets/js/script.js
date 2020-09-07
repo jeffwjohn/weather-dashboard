@@ -159,11 +159,11 @@ var displayWeather = function (data, city) {
 var displayUV = function (data) {
     uvIndex.textContent = "UV Index: " + data.value
     if (data.value < 3) {
-        uvIndex.setAttribute("class", 'forecast-data bg-success text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'col-lg-5 col-xl-4 forecast-data bg-success text-white rounded w-50 text-center');
     } else if (data.value >= 3 && data.value < 8) {
-        uvIndex.setAttribute("class", 'forecast-data bg-warning text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'col-lg-5 col-xl-4 forecast-data bg-warning text-white rounded w-50 text-center');
     } else {
-        uvIndex.setAttribute("class", 'forecast-data bg-danger text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'w-100 col-sm-12 col-lg-6 col-xl-4 forecast-data bg-danger text-white rounded w-50 text-center');
     }
 };
 
