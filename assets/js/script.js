@@ -70,8 +70,6 @@ var storeHistory = function (cityName) {
     }
 };
 
-
-
 // RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
 var getHistory = function (cityName) {
     if (localStorage.getItem('Cities') === null) {
