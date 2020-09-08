@@ -107,13 +107,13 @@ var citySearch = function (city) {
             response.json().then(function (data) {
                 displayWeather(data, city);
 
-                var apiFiveUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
-                fetch(apiFiveUrl).then(function (fiveResponse) {
-                    fiveResponse.json().then(function (fiveData) {
-                        fiveDayCompiler(fiveData);
+                // var apiFiveUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
+                // fetch(apiFiveUrl).then(function (fiveResponse) {
+                //     fiveResponse.json().then(function (fiveData) {
+                //         fiveDayCompiler(fiveData);
 
-                    })
-                })
+                //     })
+                // })
 
             })
         } else {
@@ -148,6 +148,16 @@ var displayWeather = function (data, city) {
     var lon = data.coord.lon
     var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=c888bc87519e878c5cbb608278ea9713";
     
+    // Get 5-day data
+    var fiveApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=c888bc87519e878c5cbb608278ea9713`;
+    fetch(fiveApi).then(function(response) {
+        response.json().then(function (fiveData) {
+            fiveDayCompiler(fiveData)
+            console.log(fiveData);
+
+        }) 
+    })
+      
 
     fetch(uvUrl).then(function (response) {
         response.json().then(function (data) {
@@ -173,27 +183,27 @@ var displayUV = function (data) {
 var fiveDayCompiler = function (data) {
     console.log(data);
     var fiveDayArr = [];
-    for (var i = 0; i < data.list.length; i++) {
-        if (data.list[i].dt_txt[11] == 1 && data.list[i].dt_txt[12] == 2) {
+    for (var i = 1; i < 6; i++) {
+    
             var fiveDay = {
-                date: data.list[i].dt,
-                icon: data.list[i].weather[0].icon,
-                temp: data.list[i].main.temp,
-                humidity: data.list[i].main.humidity
+                date: data.daily[i].dt,
+                icon: data.daily[i].weather[0].icon,
+                temp: data.daily[i].temp.day,
+                humidity: data.daily[i].humidity
             }
             console.log(fiveDay);
             // Round temperature to nearest integer
-            var roundTemp = Math.round(data.list[i].main.temp);
+            var roundTemp = Math.round(data.daily[i].temp.day);
             fiveDay.temp = roundTemp;
             // Convert UTC code to current date
-            var milliseconds = data.list[i].dt * 1000;
+            var milliseconds = data.daily[i].dt * 1000;
             var dateObject = new Date(milliseconds);
             var options = {month: 'numeric', day: 'numeric'};
             var newDate = dateObject.toLocaleDateString('en-US', options);
             fiveDay.date = newDate;
             fiveDayArr.push(fiveDay);
         }
-    }
+    
 
     displayFiveDay(fiveDayArr);
 };
