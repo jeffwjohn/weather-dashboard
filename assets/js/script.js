@@ -129,7 +129,7 @@ var displayWeather = function (data, city) {
     var tempRound = Math.round(data.main.temp);
     var windRound = Math.round(data.wind.speed);
     // GET ICON
-    iconEl.setAttribute("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+    iconEl.setAttribute("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
 
     temp.textContent = "Temperature: " + tempRound + "℉";
     humidity.textContent = "Humidity: " + data.main.humidity + "%";
@@ -214,7 +214,7 @@ var displayFiveDay = function (data) {
         
         var day = document.getElementById("day" + i);
         day.setAttribute('class', 'future bg-primary rounded text-white col-md m-1 w-100');
-        day.innerHTML = '<p class="h4 text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="w-100" src="https://openweathermap.org/img/w/' + data[i].icon + '.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.innerHTML = '<p class="h4 text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="w-100" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
     return
